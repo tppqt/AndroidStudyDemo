@@ -7,7 +7,7 @@ import android.widget.Button;
 import org.greenrobot.eventbus.EventBus;
 
 import xsf.evnetbustudy.base.BaseActvity;
-import xsf.evnetbustudy.event.TestEvent;
+import xsf.evnetbustudy.event.TestEvent2;
 
 public class TestActivity2 extends BaseActvity {
 
@@ -31,7 +31,7 @@ public class TestActivity2 extends BaseActvity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_msgpost2:
-                EventBus.getDefault().post(new TestEvent("testEvent2 msg send byTestAvtivity2"));
+                EventBus.getDefault().post(new TestEvent2(" net request--send by TestAvtivity2"));
                 break;
         }
 
