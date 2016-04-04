@@ -13,3 +13,5 @@ more details to view here[my csdn blog](http://blog.csdn.net/xsf50717/article/de
 facebook spring animation study demo
 ##  VolleyDemo
 volley study demo more details to view here[my csdn blog](http://blog.csdn.net/xsf50717/article/details/49687015) 
+##  AdapterStudy
+sth. important tips about the baseAdapter of listview/gridview include one or more item type and do some explore work on the encapsulation and realized interface of baseAdapter
