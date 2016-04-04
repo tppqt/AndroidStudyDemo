@@ -1,4 +1,4 @@
-package xsf.adapterstudy;
+package xsf.evnetbustudy;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package xsf.adapterstudy.base;
+package xsf.evnetbustudy.base;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

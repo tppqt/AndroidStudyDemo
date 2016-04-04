@@ -1,4 +1,4 @@
-package xsf.adapterstudy;
+package xsf.evnetbustudy;
 
 import org.junit.Test;
 

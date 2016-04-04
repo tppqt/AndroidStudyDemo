@@ -1,4 +1,4 @@
-package xsf.adapterstudy.bean;
+package xsf.evnetbustudy.bean;
 
 /**
  * @author xushangfei
@@ -8,15 +8,13 @@ package xsf.adapterstudy.bean;
 public class TestBean {
     private String title;
     private String desc;
-    private String time;
-    private String name;
 
-    public TestBean(String title, String desc, String time, String phone) {
+
+    public TestBean(String title, String desc) {
 
         this.title = title;
         this.desc = desc;
-        this.time = time;
-        this.name = phone;
+
     }
 
     public String getTitle() {
@@ -33,22 +31,6 @@ public class TestBean {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 
