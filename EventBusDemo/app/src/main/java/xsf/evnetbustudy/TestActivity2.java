@@ -31,7 +31,7 @@ public class TestActivity2 extends BaseActvity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_msgpost2:
-                EventBus.getDefault().post(new TestEvent("msg send byTestAvtivity2"));
+                EventBus.getDefault().post(new TestEvent("testEvent2 msg send byTestAvtivity2"));
                 break;
         }
 

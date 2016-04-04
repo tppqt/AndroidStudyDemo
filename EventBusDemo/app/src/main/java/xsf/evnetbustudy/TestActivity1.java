@@ -1,7 +1,6 @@
 package xsf.evnetbustudy;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -35,9 +34,7 @@ public class TestActivity1 extends BaseActvity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_msgpost:
-                Log.d("xsf", "send msg");
-
-                EventBus.getDefault().post(new TestEvent("msg send byTestAvtivity1"));
+                EventBus.getDefault().post(new TestEvent("testEvent1 msg send byTestAvtivity1"));
                 break;
         }
 

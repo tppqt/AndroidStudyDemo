@@ -11,6 +11,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import xsf.evnetbustudy.base.BaseActvity;
 import xsf.evnetbustudy.event.TestEvent;
+import xsf.evnetbustudy.event.TestEvent2;
 
 public class MainActivity extends BaseActvity {
     private TextView tv_msg;
@@ -46,12 +47,17 @@ public class MainActivity extends BaseActvity {
 
     @Subscribe
     public void mytest(TestEvent event) {
-        String msg = "onEventMainThread get the msg: " + event.getMsg();
+        String msg = "onEventMainThread get the msg: \n" + event.getMsg();
         tv_msg.setText(msg);
         Log.d("xsf", msg);
         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    @Subscribe
+    public void mytest(TestEvent2 event2) {
+        String msg = "onEventMainThread get the msg: \n" + event2.getMsg();
+        tv_msg.setText(msg);
+    }
 
 
     @Override

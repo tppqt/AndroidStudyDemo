@@ -14,20 +14,25 @@
     <TextView
         android:id="@+id/tv_msg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:textSize="30dp"
+        tools:text="test"
+        />
 
     <Button
         android:id="@+id/btn_act1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_msg"
-        android:text="NormalAdapter"/>
+        android:text="btn_act1"/>
 
     <Button
         android:id="@+id/btn_act2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_act1"
-        android:text="multitype"/>
+        android:text="btn_act2"/>
 
 </RelativeLayout>
