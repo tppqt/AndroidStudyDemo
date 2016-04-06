@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn2 = (Button) findViewById(R.id.btn_test2);
         btn3 = (Button) findViewById(R.id.btn_test3);
         btn4 = (Button) findViewById(R.id.btn_test4);
-        btn5 = (Button) findViewById(R.id.btn_test5);
+
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
-        btn5.setOnClickListener(this);
+
         tv_test = (TextView) findViewById(R.id.tv_test);
 
     }
