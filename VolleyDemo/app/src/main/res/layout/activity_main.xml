@@ -8,11 +8,76 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="string"
+        />
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_1"
+        android:text="json"
+        />
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_2"
+        android:text="imgRequest"
+        />
+
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_3"
+        android:text="imgeLoader"
+        />
+
+    <Button
+        android:id="@+id/btn_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_4"
+        android:text="netimgeLoader"
+        />
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_5"
+        android:text="xmlReq"
+        />
+
+
     <TextView
+        android:id="@+id/tvShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_6"
         android:layout_centerHorizontal="true"
-        android:text="点击OPtion按钮选择Volley网络请求方式"
-        android:textSize="15sp"/>
+        android:text="显示内容"
+        android:textSize="15dp"/>
+
+    <ImageView
+        android:id="@+id/ivShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvShow"
+        android:layout_centerInParent="true"/>
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/netImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivShow"
+        android:layout_centerHorizontal="true"/>
+
 
 </RelativeLayout>
