@@ -1,28 +1,47 @@
 package com.elvis.volleydemo;
 
-import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import base.BaseActvity;
+import bean.WeatherNew;
+import customRequest.XMLRequest;
+import utils.BitmapCache;
 import utils.VolleyStrRequest;
 import utils.VolleyStringReqItf;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActvity {
+
+    private TextView tvshow;
+    private ImageView ivShow;
+    private NetworkImageView netImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +51,178 @@ public class MainActivity extends AppCompatActivity {
         //Volley_JsonGet();
         //Volley_StringPost();
         //Volley_JsonPost();
+        inintViews();
+
+
+    }
+
+    private void inintViews() {
+        tvshow = (TextView) findViewById(R.id.tvShow);
+        ivShow = (ImageView) findViewById(R.id.ivShow);
+        netImg = (NetworkImageView) findViewById(R.id.netImg);
+        findViewById(R.id.btn_1).setOnClickListener(this);
+        findViewById(R.id.btn_2).setOnClickListener(this);
+        findViewById(R.id.btn_3).setOnClickListener(this);
+        findViewById(R.id.btn_4).setOnClickListener(this);
+        findViewById(R.id.btn_5).setOnClickListener(this);
+        findViewById(R.id.btn_6).setOnClickListener(this);
+
+    }
+
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_1:
+                VolleyStringRequest();
+                break;
+            case R.id.btn_2:
+                VolleyJsonRequest();
+                break;
+            case R.id.btn_3:
+                VolleyImgRequest();
+                break;
+            case R.id.btn_4:
+                VolleyImgLoder();
+                break;
+            case R.id.btn_5:
+                VolleyNetImg();
+                break;
+            case R.id.btn_6:
+                xmlReq();
+                break;
+            default:
+                break;
+
+        }
+    }
+
+
+    private void xmlReq() {
+        String url = " http://flash.weather.com.cn/wmaps/xml/china.xml";
+        final XMLRequest xmlReq = new XMLRequest(url, new Response.Listener<XmlPullParser>() {
+            @Override
+            public void onResponse(XmlPullParser response) {
+                try {
+                    int eventType = response.getEventType();
+                    while (eventType != XmlPullParser.END_DOCUMENT) {
+                        switch (eventType) {
+                            case XmlPullParser.START_TAG:
+                                String nodeName = response.getName();
+                                if ("city".equals(nodeName)) {
+                                    String pName = response.getAttributeValue(0);
+                                    Log.d("TAG", "pName is " + pName);
+                                }
+                                break;
+                        }
+                        eventType = response.next();
+                    }
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                tvshow.setText("sucess,check it on Ternal");
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                tvshow.setText(volleyError.toString());
+            }
+        });
+        MyApplication.getHttpQueues().add(xmlReq);
+    }
+
+    private void VolleyNetImg() {
+        String imgurl = "https://avatars2.githubusercontent.com/u/8703500?v=3&s=460";
+        RequestQueue queues = MyApplication.getHttpQueues();
+        ImageLoader imageLoader = new ImageLoader(queues, new BitmapCache());
+        netImg.setDefaultImageResId(R.mipmap.ic_launcher);
+        netImg.setErrorImageResId(R.mipmap.ivempty);
+        netImg.setImageUrl(imgurl, imageLoader);
+
+    }
+
+    private void VolleyImgLoder() {
+        String imgurl = "https://avatars2.githubusercontent.com/u/8703500?v=3&s=460";
+        RequestQueue queues = MyApplication.getHttpQueues();
+        ImageLoader imageLoader = new ImageLoader(queues, new BitmapCache());
+        ImageLoader.ImageListener listener = imageLoader.getImageListener(ivShow, R.mipmap.ic_launcher, R.mipmap.ivempty);
+        imageLoader.get(imgurl, listener);
+        //imageLoader.get(imgurl, listener,200,200);
+
+    }
+
+    private void VolleyImgRequest() {
+        String imgurl = "https://avatars2.githubusercontent.com/u/8703500?v=3&s=460";
+        final ImageRequest imgReq = new ImageRequest(imgurl,
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap bitmap) {
+                        ivShow.setImageBitmap(bitmap);
+                    }
+                }, 0, 0, Bitmap.Config.ARGB_8888,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        tvshow.setText(volleyError.toString());
+                        ivShow.setImageResource(R.mipmap.ic_launcher);
+                    }
+                }
+        );
+        MyApplication.getHttpQueues().add(imgReq);
+
+    }
+
+    private void VolleyJsonRequest() {
+        final JsonObjectRequest jsonObj = new JsonObjectRequest("http://wthrcdn.etouch.cn/weather_mini?city=成都", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Gson gson = new Gson();
+                WeatherNew weatherInfo = gson.fromJson(jsonObject.toString(), WeatherNew.class);
+                try{
+                    tvshow.setText("城市：" + weatherInfo.data.city + "\n"
+                                    + "staus is: " + weatherInfo.status + "\n"
+                                    + "温度 :" + weatherInfo.data.wendu + "\n"
+                                    + "感冒指数 :" + weatherInfo.data.ganmao + "\n"
+                                    + "昨日 最高气温：" + weatherInfo.data.yesterday.high + "\n"
+                                    + "预报 后天风力" + weatherInfo.data.forecast.get(3).fengli
+                                //    + "预报 后天风力" + weatherInfo.data.forecast.get(5).fengli
+                    );
+                }
+                catch (Exception e){
+                    Toast.makeText(MainActivity.this, "暂无数据", Toast.LENGTH_SHORT).show();
+                }
+
+
+                System.out.println(jsonObject.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                tvshow.setText(volleyError.toString());
+                Toast.makeText(MainActivity.this, "jsonObjRequest Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+        MyApplication.getHttpQueues().add(jsonObj);
+    }
+
+    private void VolleyStringRequest() {
+        // RequestQueue mQueue = Volley.newRequestQueue(this);
+        StringRequest strrq = new StringRequest("http://www.baidu.com", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                tvshow.setText(s);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Toast.makeText(MainActivity.this, "String request error", Toast.LENGTH_SHORT).show();
+            }
+        });
+        // mQueue.add(strrq);
+        MyApplication.getHttpQueues().add(strrq);
 
     }
 
@@ -61,8 +252,9 @@ public class MainActivity extends AppCompatActivity {
                 MyVolley_StringPost();
                 break;
             case 5:
-                Intent it = new Intent(MainActivity.this, ImageActivity.class);
-                startActivity(it);
+                /*Intent it = new Intent(MainActivity.this, ImageActivity.class);
+                startActivity(it);*/
+                launch(ImageActivity.class);
                 break;
 
             default:
