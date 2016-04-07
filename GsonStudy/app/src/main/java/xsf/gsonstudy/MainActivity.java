@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,6 +17,7 @@ import java.util.List;
 import xsf.gsonstudy.bean.Contact;
 import xsf.gsonstudy.bean.Person;
 import xsf.gsonstudy.bean.PersonComplex;
+import xsf.gsonstudy.bean.weather.WeatherNew;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btn1, btn2, btn3, btn4, btn5, btn6;
@@ -30,16 +32,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initviews() {
-        gson = new Gson();
+
         btn1 = (Button) findViewById(R.id.btn_test1);
         btn2 = (Button) findViewById(R.id.btn_test2);
         btn3 = (Button) findViewById(R.id.btn_test3);
         btn4 = (Button) findViewById(R.id.btn_test4);
+        btn5 = (Button) findViewById(R.id.btn_test5);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
+        btn5.setOnClickListener(this);
 
         tv_test = (TextView) findViewById(R.id.tv_test);
 
@@ -60,8 +64,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_test4:
                 testListPersonComplex();
                 break;
+            case R.id.btn_test5:
+                testWeather();
+                break;
+            default:
+                break;
 
 
+        }
+
+    }
+
+    private void testWeather() {
+        Gson gson = new Gson();
+        String weatherstr = "{\"desc\":\"OK\",\"status\":1000,\"data\":{\"wendu\":\"20\",\"ganmao\":\"各项气象条件适宜，无明显降温过程，发生感冒机率较低。\",\"forecast\":[{\"fengxiang\":\"无持续风向\",\"fengli\":\"微风级\",\"high\":\"高温 25℃\",\"type\":\"阴\",\"low\":\"低温 15℃\",\"date\":\"7日星期四\"},{\"fengxiang\":\"南风\",\"fengli\":\"微风级\",\"high\":\"高温 23℃\",\"type\":\"阴\",\"low\":\"低温 16℃\",\"date\":\"8日星期五\"},{\"fengxiang\":\"无持续风向\",\"fengli\":\"微风级\",\"high\":\"高温 21℃\",\"type\":\"阴\",\"low\":\"低温 15℃\",\"date\":\"9日星期六\"},{\"fengxiang\":\"无持续风向\",\"fengli\":\"微风级\",\"high\":\"高温 21℃\",\"type\":\"阴\",\"low\":\"低温 13℃\",\"date\":\"10日星期天\"},{\"fengxiang\":\"无持续风向\",\"fengli\":\"微风级\",\"high\":\"高温 22℃\",\"type\":\"多云\",\"low\":\"低温 14℃\",\"date\":\"11日星期一\"}],\"yesterday\":{\"fl\":\"微风\",\"fx\":\"北风\",\"high\":\"高温 21℃\",\"type\":\"小雨\",\"low\":\"低温 13℃\",\"date\":\"6日星期三\"},\"aqi\":\"63\",\"city\":\"成都\"}}\n";
+        WeatherNew weatherInfo = gson.fromJson(weatherstr, WeatherNew.class);
+        try {
+            tv_test.setText("城市：" + weatherInfo.data.city + "\n"
+                            + "staus is: " + weatherInfo.status + "\n"
+                            + "温度 :" + weatherInfo.data.wendu + "\n"
+                            + "感冒指数 :" + weatherInfo.data.ganmao + "\n"
+                            + "昨日 最高气温：" + weatherInfo.data.yesterday.high + "\n"
+                            + "预报 后天风力" + weatherInfo.data.forecast.get(3).fengli
+                    //+ "预报 后天风力" + weatherInfo.data.forecast.get(5).fengli
+            );
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "暂无数据", Toast.LENGTH_SHORT).show();
         }
 
     }
