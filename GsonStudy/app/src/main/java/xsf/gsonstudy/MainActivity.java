@@ -167,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void testPerson1() {
+        Gson gson  = new Gson();
         Person person = new Person("xsf", 13);
         final String personjsonStr = gson.toJson(person);
 
