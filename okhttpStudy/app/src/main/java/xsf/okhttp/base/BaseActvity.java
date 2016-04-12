@@ -6,6 +6,8 @@ import android.view.View;
 
 import java.io.Serializable;
 
+import xsf.okhttp.view.CustomProgressDialog;
+
 /**
  * @author xushangfei
  * @time Created at 2016/4/2.
@@ -13,6 +15,7 @@ import java.io.Serializable;
  */
 public class BaseActvity extends AppCompatActivity implements View.OnClickListener {
     public static final String SER_KEY = "object";
+    protected CustomProgressDialog progressDialog;// 自定义进度框
 
     public void launch(Class<?> clazz) {
         Intent intent = new Intent(this, clazz);
@@ -29,5 +32,27 @@ public class BaseActvity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
+    }
+    public void startProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = CustomProgressDialog.createDialog(this);
+            progressDialog.setMessage("");
+        }
+        progressDialog.show();
+    }
+
+    public void startProgressDialog(String msg) {
+        if (progressDialog == null) {
+            progressDialog = CustomProgressDialog.createDialog(this);
+            progressDialog.setMessage(msg);
+        }
+        progressDialog.show();
+    }
+
+    public void stopProgressDialog() {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 }

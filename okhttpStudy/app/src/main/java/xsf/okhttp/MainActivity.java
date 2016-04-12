@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
@@ -17,11 +18,15 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 
 import xsf.okhttp.base.BaseActvity;
+import xsf.okhttp.bean.weather.Weather;
 import xsf.okhttp.net.OkHttpUtils;
+import xsf.okhttp.util.JsonUtil;
 
 public class MainActivity extends BaseActvity {
 
     private TextView tvShow, tvShow2;
+    private Weather weather;
+    private ImageView ivShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class MainActivity extends BaseActvity {
         tvShow2 = (TextView) findViewById(R.id.tvSho2);
         tvShow.setMovementMethod(new ScrollingMovementMethod());
         tvShow2.setMovementMethod(new ScrollingMovementMethod());
+        ivShow = (ImageView) findViewById(R.id.ivShow);
 
 
     }
@@ -75,17 +81,37 @@ public class MainActivity extends BaseActvity {
                 }).start();
                 break;
             case R.id.btn_http3:
+
+               /* new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        testOkutil();
+                    }
+                }).start();*/
+
                 testOkutil();
                 break;
         }
     }
 
     private void testOkutil() {
-        String url = "http://blog.csdn.net/xsf50717";
+        // String url = "http://blog.csdn.net/xsf50717";
+        startProgressDialog();
+        String url = "http://api.map.baidu.com/telematics/v3/weather?location=" + "成都" + "&output=json&ak=UMs5TPhtIKtzxG6RQz2QcSPs";
+
+
         OkHttpUtils.get(url, new OkHttpUtils.ResultCallBack<String>() {
             @Override
             public void onSucess(String response) {
-                tvShow.setText(response.toString());
+                //tvShow.setText(response.toString());
+                weather = (Weather) JsonUtil.jsonToObject(response, Weather.class);
+
+                tvShow.setText("weather.status: " + weather.status + "\n"
+                        + "city: " + weather.results.get(0).currentCity + "\n"
+                        + "天气描述 :" + weather.results.get(0).index.get(3).des + "\n"
+                        + "温度：" + weather.results.get(0).weather_data.get(2).temperature + "\n"
+                );
+
             }
 
             @Override
@@ -95,6 +121,8 @@ public class MainActivity extends BaseActvity {
             }
 
         });
+        stopProgressDialog();
+
     }
 
     private void httpget2() {

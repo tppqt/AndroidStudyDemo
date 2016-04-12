@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="get_http2"/>
+
     <Button
         android:id="@+id/btn_http3"
         android:layout_width="match_parent"
@@ -37,14 +38,21 @@
         android:padding="5dp"
         tools:text="test"
         />
+
     <TextView
-        android:layout_marginTop="10dp"
         android:id="@+id/tvSho2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:padding="5dp"
         tools:text="test"
         />
+
+    <ImageView
+        android:id="@+id/ivShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
