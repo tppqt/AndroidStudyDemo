@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".activities.objanimatorTest">
         </activity>
+        <activity android:name=".activities.valueAnimatorAct">
+        </activity>
     </application>
 
 </manifest>

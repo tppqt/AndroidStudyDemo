@@ -12,11 +12,17 @@
     tools:context=".activities.TestActivity1">
 
     <Button
-        android:id="@+id/btnObj"
+        android:id="@+id/btnObjAnimator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="objAnimator1"
+        android:text="objAnimator"
         />
+
+    <Button
+        android:id="@+id/btnValueAnimator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ValueAnimator"/>
 
     <!-- <ListView
          android:id="@+id/lv_test2"
