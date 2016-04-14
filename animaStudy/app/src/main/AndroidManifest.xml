@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".activities.TestActivity2">
         </activity>
+        <activity android:name=".activities.ValueTestAct">
+        </activity>
     </application>
 
 </manifest>

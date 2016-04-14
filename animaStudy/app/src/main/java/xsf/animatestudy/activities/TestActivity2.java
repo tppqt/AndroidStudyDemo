@@ -25,8 +25,10 @@ public class TestActivity2 extends BaseActvity {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnValueObj:
+                launch(ValueTestAct.class);
+                break;
 
         }
     }
