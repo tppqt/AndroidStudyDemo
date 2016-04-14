@@ -42,6 +42,7 @@ public class ValueTestAct extends BaseActvity {
 
     }
 
+
     private void checkLogin() {
 
         boolean isName = etName.getText().toString().equals("xsf");
