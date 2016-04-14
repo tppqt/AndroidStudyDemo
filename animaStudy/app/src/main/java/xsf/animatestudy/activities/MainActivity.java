@@ -1,8 +1,9 @@
-package xsf.animatestudy;
+package xsf.animatestudy.activities;
 
 import android.os.Bundle;
 import android.view.View;
 
+import xsf.animatestudy.R;
 import xsf.animatestudy.base.BaseActvity;
 
 public class MainActivity extends BaseActvity {

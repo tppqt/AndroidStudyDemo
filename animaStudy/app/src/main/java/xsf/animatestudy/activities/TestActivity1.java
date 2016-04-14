@@ -1,4 +1,4 @@
-package xsf.animatestudy;
+package xsf.animatestudy.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import xsf.animatestudy.R;
 import xsf.animatestudy.base.BaseActvity;
 
 public class TestActivity1 extends BaseActvity {
@@ -34,7 +35,8 @@ public class TestActivity1 extends BaseActvity {
         btnSetAnimation.setOnClickListener(this);
         ivShow = (ImageView) findViewById(R.id.ivShow);
         ivShow.setOnClickListener(this);
-        setAnimation = AnimationUtils.loadAnimation(this, R.anim.setanimtion);
+
+
     }
 
     @Override
@@ -54,6 +56,7 @@ public class TestActivity1 extends BaseActvity {
     }
 
     private void startSetnimation() {
+        setAnimation = AnimationUtils.loadAnimation(this, R.anim.setanimtion);
         ivShow.startAnimation(setAnimation);
 
     }
