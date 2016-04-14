@@ -10,7 +10,7 @@ import android.widget.TextView;
 import xsf.animatestudy.R;
 import xsf.animatestudy.base.BaseActvity;
 
-public class ValueTestAct extends BaseActvity {
+public class objanimatorTest extends BaseActvity {
     private EditText etName, etPswd;
     private Button btnLogin;
     private TextView tvTips;

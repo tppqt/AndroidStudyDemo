@@ -8,7 +8,7 @@ import xsf.animatestudy.R;
 import xsf.animatestudy.base.BaseActvity;
 
 public class TestActivity2 extends BaseActvity {
-    private Button btnValueAnimator;
+    private Button btnObjAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,8 @@ public class TestActivity2 extends BaseActvity {
     }
 
     private void initView() {
-        btnValueAnimator = (Button) findViewById(R.id.btnValueObj);
-        btnValueAnimator.setOnClickListener(this);
+        btnObjAnimator = (Button) findViewById(R.id.btnValueObj);
+        btnObjAnimator.setOnClickListener(this);
 
     }
 
@@ -27,7 +27,7 @@ public class TestActivity2 extends BaseActvity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnValueObj:
-                launch(ValueTestAct.class);
+                launch(objanimatorTest.class);
                 break;
 
         }
