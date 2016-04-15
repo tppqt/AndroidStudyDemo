@@ -24,6 +24,13 @@
         android:layout_height="wrap_content"
         android:text="ValueAnimator"/>
 
+    <Button
+        android:id="@+id/btnValueObj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ValueofObj"
+        />
+
     <!-- <ListView
          android:id="@+id/lv_test2"
          android:layout_width="match_parent"
