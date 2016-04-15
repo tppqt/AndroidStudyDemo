@@ -39,7 +39,7 @@
         android:id="@+id/layputuserpsw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutusername"
+        android:layout_below="@id/layoutusername"
         android:layout_marginTop="10dp">
 
         <EditText
@@ -54,10 +54,28 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layputuserpsw"
+        android:layout_below="@id/layputuserpsw"
         android:layout_centerHorizontal="true"
         android:text="login"
         />
 
+    <Button
+        android:id="@+id/btnObjAnim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="objAnimator"/>
+
+    <TextView
+        android:id="@+id/tvShowObj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnObjAnim"
+        android:layout_centerHorizontal="true"
+        android:background="@color/darkorchid"
+        android:textSize="20dp"
+        tools:text="ceshi"/>
 
 </RelativeLayout>

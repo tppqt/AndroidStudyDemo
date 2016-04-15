@@ -1,6 +1,7 @@
 package xsf.animatestudy.activities;
 
 import android.animation.Animator;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.util.Log;
@@ -92,5 +93,13 @@ public class valueAnimatorAct extends BaseActvity {
         valueAnimator.start();
 
 
+    }
+
+    class myInInterpolator implements TimeInterpolator {
+
+        @Override
+        public float getInterpolation(float input) {
+            return 1 - input;
+        }
     }
 }

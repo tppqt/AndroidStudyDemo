@@ -12,8 +12,8 @@ import xsf.animatestudy.base.BaseActvity;
 
 public class objanimatorTest extends BaseActvity {
     private EditText etName, etPswd;
-    private Button btnLogin;
-    private TextView tvTips;
+    private Button btnLogin, btnObjAnim;
+    private TextView tvTips, tvShowObj;
 
 
     @Override
@@ -28,7 +28,10 @@ public class objanimatorTest extends BaseActvity {
         etPswd = (EditText) findViewById(R.id.etPswd);
         tvTips = (TextView) findViewById(R.id.tvTips);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnObjAnim = (Button) findViewById(R.id.btnObjAnim);
+        btnObjAnim.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+        tvShowObj = (TextView) findViewById(R.id.tvShowObj);
 
     }
 
@@ -38,7 +41,31 @@ public class objanimatorTest extends BaseActvity {
             case R.id.btnLogin:
                 checkLogin();
                 break;
+            case R.id.btnObjAnim:
+                TestObjAnimtor();
+                break;
         }
+
+    }
+
+    /*    //1、透明度：alpha
+        public void setAlpha(float alpha);
+
+        //2、旋转度数：rotation、rotationX、rotationY
+        public void setRotation(float rotation);
+        public void setRotationX(float rotationX);
+        public void setRotationY(float rotationY);
+
+        //3、平移：translationX、translationY
+        public void setTranslationX(float translationX);
+        public void setTranslationY(float translationY);
+
+        //缩放：scaleX、scaleY
+        public void setScaleX(float scaleX);
+        public void setScaleY(float scaleY);*/
+    private void TestObjAnimtor() {
+        tvShowObj.setText("测试语言");
+        ObjectAnimator.ofInt(tvShowObj, "alpha", 1, 0, 1).setDuration(600).start();
 
     }
 
@@ -52,15 +79,10 @@ public class objanimatorTest extends BaseActvity {
             tvTips.setText("输入正确");
         } else {
             tvTips.setText("输入错误");
-            ObjectAnimator.ofFloat(tvTips,"translationX",0,60,-60,20,-20,5,-5,0).setDuration(600).start();
+            ObjectAnimator.ofFloat(tvTips, "translationX", 0, 60, -60, 20, -20, 5, -5, 0).setDuration(600).start();
         }
 
     }
 }
 
 
-/*
-lockHintView.setVisibility(View.VISIBLE);
-        lockHintView.setText("密码错误,还可以再输入"+lockInfo.getTryTime()+"次");
-
-        ObjectAnimator.ofFloat(lockHintView,"translationX",0,60,-60,20,-20,5,-5,0).setDuration(600).start();*/
