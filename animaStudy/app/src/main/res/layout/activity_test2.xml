@@ -31,6 +31,14 @@
         android:text="ValueofObj"
         />
 
+    <Button
+        android:id="@+id/btnBlog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="btnBlog"
+        />
+
+
     <!-- <ListView
          android:id="@+id/lv_test2"
          android:layout_width="match_parent"

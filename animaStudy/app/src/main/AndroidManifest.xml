@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".activities.valueOfObjActivity">
         </activity>
+        <activity android:name=".activities.BlogActivity">
+        </activity>
     </application>
 
 </manifest>
