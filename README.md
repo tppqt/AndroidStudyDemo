@@ -21,3 +21,7 @@ add some useful okhttp tool& parse a complex jsonstr（weather）.
 
 ## animaStudy
 animation & amimator study demo
+
+
+##2DStudy
+2D API study about canvas、path、paint  
