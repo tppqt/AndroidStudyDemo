@@ -17,10 +17,11 @@ import android.view.View;
  */
 public class TestView2 extends View {
     private Paint paint_black, paint_white;
-    private Path path1, path2, path3, path4;
-
-
     private int mWidth, mHeight;
+    private Path path1;
+    private Path path2;
+    private Path path3;
+    private Path path4;
 
     public TestView2(Context context) {
         this(context, null);
@@ -39,10 +40,11 @@ public class TestView2 extends View {
         //构造两个画笔，一个红色，一个绿色
         paint_black = generatePaint(Color.BLACK, Paint.Style.FILL, 3);
         paint_white = generatePaint(Color.WHITE, Paint.Style.FILL, 3);
-        Path path1 = new Path();
-        Path path2 = new Path();
-        Path path3 = new Path();
-        Path path4 = new Path();
+
+        path1 = new Path();
+        path2 = new Path();
+        path3 = new Path();
+        path4 = new Path();
     }
 
     private Paint generatePaint(int color, Paint.Style style, int width) {
@@ -66,6 +68,11 @@ public class TestView2 extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.translate(mWidth / 2, mHeight / 2);
+        path1 = new Path();
+        path2 = new Path();
+        path3 = new Path();
+        path4 = new Path();
+
 
         path1.addCircle(0, 0, 200, Path.Direction.CW);
         path2.addRect(0, -200, 200, 200, Path.Direction.CW);
