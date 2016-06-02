@@ -1,5 +1,8 @@
 package xsf.study2D;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 
@@ -23,6 +26,7 @@ public class MainActivity extends BaseActvity {
         btn_mvp.setOnClickListener(this);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -31,6 +35,22 @@ public class MainActivity extends BaseActvity {
                 break;
             case R.id.btn_view2:
                 launchActvity(View2Activity.class);
+        }
+    }
+
+    class LooperThread extends Thread {
+        public Handler mHandler;
+
+        public void run() {
+            Looper.prepare();   //【见 2.1】
+
+            mHandler = new Handler() {  //【见 3.1】
+                public void handleMessage(Message msg) {
+                    //TODO    定义消息处理逻辑. 【见 3.2】
+                }
+            };
+
+            Looper.loop();  //【见 2.2】
         }
     }
 }
