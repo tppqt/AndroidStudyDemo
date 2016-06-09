@@ -68,6 +68,7 @@ public class TestView2 extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.translate(mWidth / 2, mHeight / 2);
+
         path1 = new Path();
         path2 = new Path();
         path3 = new Path();
