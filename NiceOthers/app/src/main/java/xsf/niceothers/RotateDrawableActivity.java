@@ -66,7 +66,7 @@ public class RotateDrawableActivity extends BaseActvity implements MediaPlayer.O
             switch (v.getId()) {
                 case R.id.btnPre:
                     isRoteflag = false;
-                    MusicAction(-1);
+                    MusicAction(PREVIOUS);
                     break;
                 case R.id.btnPlay:
                     if (audioState != AudioState.STATE_PLAYING) {
@@ -82,7 +82,7 @@ public class RotateDrawableActivity extends BaseActvity implements MediaPlayer.O
                     break;
                 case R.id.btnNext:
                     isRoteflag = false;
-                    MusicAction(1);
+                    MusicAction(NEXT);
                     break;
 
             }
@@ -93,7 +93,7 @@ public class RotateDrawableActivity extends BaseActvity implements MediaPlayer.O
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        MusicAction(1);
+        MusicAction(NEXT);
 
     }
 
