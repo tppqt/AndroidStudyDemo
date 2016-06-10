@@ -194,7 +194,6 @@ public class RotateDrawableActivity extends BaseActvity implements MediaPlayer.O
 
                 }
 
-
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
