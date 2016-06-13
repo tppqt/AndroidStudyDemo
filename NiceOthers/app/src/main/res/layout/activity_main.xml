@@ -13,13 +13,13 @@
     tools:context="xsf.niceothers.MainActivity">
 
     <Button
-        android:id="@+id/btn_mvc"
+        android:id="@+id/btn_rotate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="RotateDrawable"/>
 
     <Button
-        android:id="@+id/btn_mvp"
+        android:id="@+id/btn_circleProcessBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="mvp"/>

@@ -17,20 +17,20 @@ public class MainActivity extends BaseActvity {
 
     @Override
     protected void initView() {
-        btn_mvc = IfindViewById(R.id.btn_mvc);
+        btn_mvc = IfindViewById(R.id.btn_rotate);
         btn_mvc.setOnClickListener(this);
-        btn_mvp = IfindViewById(R.id.btn_mvp);
+        btn_mvp = IfindViewById(R.id.btn_circleProcessBar);
         btn_mvp.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_mvc:
+            case R.id.btn_rotate:
                 launchActvity(RotateDrawableActivity.class);
                 break;
-            case R.id.btn_mvp:
-                launchActvity(MVPActivity.class);
+            case R.id.btn_circleProcessBar:
+                launchActvity(CirclePressActivity.class);
         }
     }
 }

@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".RotateDrawableActivity">
         </activity>
-        <activity android:name="xsf.niceothers.MVPActivity">
+        <activity android:name=".CirclePressActivity">
         </activity>
     </application>
 
